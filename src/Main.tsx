@@ -1,37 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
 import './Main.css';
+import {useState} from 'react'
 
 
-function Comp(props: {title: string}){
+function Comp(props: {title: string}): JSX.Element{
+	let state = useState(0)
 	return (
-		<div style={
-			{
-				backgroundColor: "#3366ff",
-				color: "#fff",
-				borderRadius: "10px",
-				padding: "10px",
-				marginBottom: "10px",
-				border: "solid 5px #2244cc"
-			}
-		}>
-			<h1>{props.title}</h1>
-			<h2>{props.title}</h2>
-			<h3>{props.title}</h3>
-			<h4>{props.title}</h4>
-			<h5>{props.title}</h5>
-			<h6>{props.title}</h6>
+		<div>
+			<h1>{props.title} | {state[0]}</h1>
+			<input type="button" value={props.title} onClick={() => {
+
+				let [s_value, s_change] = state;
+				s_change(s_value + 1)
+			}} />
+			<input type="button" value={props.title} onClick={() => {
+
+				let [s_value, s_change] = state;
+				s_change(s_value - 1)
+			}} />
 		</div>
 	)
 }
 
-function App() {
+function App(): JSX.Element {
   	return (
     	<main>
-			<Comp title="a"/>
-			<Comp title="s"/>
-			<Comp title="d"/>
-			<Comp title="f"/>
+			<Comp title="title"/>
+			<Comp title="asdf"/>
+			<Comp title="hmmmmmm"/>
     	</main>
   );
 }
