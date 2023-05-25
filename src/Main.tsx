@@ -6,22 +6,27 @@ import Post from './Post'
 
 
 export default function Main(){
-	const a = useState<Array<[string | undefined, string | undefined]>>([]);
+	const post_data = useState<Array<[string | undefined, string | undefined]>>([]);
+	const [modal, change_modal] = useState<Boolean>(false)
 	const [title, des] = [useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null)];
+	console.log(window.innerHeight)
 	return (
 		<main>
-			<form onSubmit={
-				(e) => {
-				e.preventDefault()
-				let value: Array<[string | undefined, string | undefined]> = [...a[0], [title.current?.value, des.current?.value]]
-				console.log(value)
-				a[1](value)
-			}}>
-				<input type="text" name="title" id="title" placeholder="title" ref={title}/> <br/>
-				<input type="text" name="des" id="des" placeholder="description" ref={des}/> <br/>
-				<input type="submit" value="submit" />
-			</form>
-			<Post arr={a[0]}></Post>
+			<div id="modal" style={{height: `${window.outerHeight}px`, display: modal? "flex": "none"}} onClick={() => change_modal(false)}>
+				<form onSubmit={
+					(e) => {
+					e.preventDefault()
+					let value: Array<[string | undefined, string | undefined]> = [...post_data[0], [title.current?.value, des.current?.value]]
+					console.log(value)
+					post_data[1](value)
+				}}>
+					<input type="text" name="title" id="title" placeholder="title" ref={title}/> <br/>
+					<input type="text" name="des" id="des" placeholder="description" ref={des}/> <br/>
+					<input type="submit" value="submit" />
+				</form>
+			</div>
+			<input id="modal-sw" type="button" value="+" onClick={() => change_modal(!modal)}/>
+			<Post arr={post_data[0]}></Post>
 		</main>
 	)
 }
