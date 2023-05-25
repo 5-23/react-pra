@@ -1,0 +1,22 @@
+#posts{
+    margin: 20px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.post{
+    flex-grow: 1;
+    min-width: 200px;
+    max-width: 300px;
+    height: 150px;
+    color: #191919;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #fff;
+}
+
+.post > h2{
+    color: #bbb;
+}

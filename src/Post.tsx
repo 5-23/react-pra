@@ -1,16 +1,18 @@
-// import { Component } from "react"
+import { Component } from "react"
+import './Post.css'
 
-// export default class Post extends Component<{arr: Array<[string, string]>}>{
-//     render(): JSX.Element {
-//         return (
-//             <div>
-//                 {this.props.arr.map(([title, des], i:number) => (
-//                     <div>
-//                         <h1>{i}. {title}</h1>
-//                         <h2>{des}</h2>
-//                     </div>
-//                 ))}
-//             </div>
-//         )
-//     }
-// }
+
+export default class Post extends Component<{arr: Array<[string | undefined, string | undefined]>}>{
+    render(): JSX.Element {
+        return (
+            <div id="posts">
+                {this.props.arr.map(([title, des], _:number) => (
+                    <div className="post">
+                        <h1>{title}</h1>
+                        <h2>{des}</h2>
+                    </div>
+                ))}
+            </div>
+        )
+    }
+}
