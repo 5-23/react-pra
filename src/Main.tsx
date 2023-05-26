@@ -12,13 +12,14 @@ export default function Main(){
 	console.log(window.innerHeight)
 	return (
 		<main>
-			<div id="modal" style={{height: `${window.outerHeight}px`, display: modal? "flex": "none"}} onClick={() => change_modal(false)}>
+			<div id="modal" style={{height: `${window.outerHeight}px`, display: modal? "flex": "none"}}>
 				<form onSubmit={
 					(e) => {
 					e.preventDefault()
 					let value: Array<[string | undefined, string | undefined]> = [...post_data[0], [title.current?.value, des.current?.value]]
 					console.log(value)
 					post_data[1](value)
+					change_modal(false)
 				}}>
 					<input type="text" name="title" id="title" placeholder="title" ref={title}/> <br/>
 					<input type="text" name="des" id="des" placeholder="description" ref={des}/> <br/>
