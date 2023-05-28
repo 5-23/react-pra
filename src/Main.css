@@ -34,7 +34,8 @@ form{
     gap: 0px;
 
     align-items: center;
-    background-color: #eee;
+    background-color: #fff;
+    border: 1px solid #eee;
     padding: 30px;
     border-radius: 15px;
     /* width: 80%; */
